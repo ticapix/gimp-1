@@ -2006,6 +2006,7 @@ gimp_display_shell_compress_motion (GdkEvent *initial_event)
 
       if (!event)
         {
+          break;
           /* Do nothing */
         }
       else if ((gtk_get_event_widget (event) == widget)               &&
