@@ -2464,9 +2464,12 @@ gimp_image_get_xcf_version (GimpImage    *image,
   if (gimp_image_get_precision (image) > GIMP_PRECISION_U8_GAMMA)
     version = MAX (12, version);
 
-  /* need version 8 for zlib compression */
+  /* need version 8 for zlib compression, and version 13 for delta-encoded
+   * zlib compression; we always use delta encoding when zlib compression is
+   * requested.
+   */
   if (zlib_compression)
-    version = MAX (8, version);
+    version = MAX (13, version);
 
   /* if version is 10 (lots of new layer modes), go to version 11 with
    * 64 bit offsets right away
